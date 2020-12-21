@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "jest",
-    "b": "vue-cli-service build src/template/main.js"
+    "test": "jest"
   },
   "author": "kazuki-komori",
   "license": "MIT",

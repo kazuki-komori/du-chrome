@@ -3,10 +3,10 @@ import App from "./App.vue";
 
 (function () {
     'use strict';
-    let el = document.querySelector('.cm-contentsList')
+    let el = document.querySelector('.table-responsive')
     console.log(el)
     el.insertAdjacentHTML(
-        "beforeEnd",
+        "beforebegin",
         `<div id="vue-app"></div>`
     );
     let vm = new Vue({
