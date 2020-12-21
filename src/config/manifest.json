@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "同志社 通知収集クローラー",
+  "short_name": "du-chrome",
+  "version": "1.0.0",
+  "default_locate": "ja_JP",
+  "description": "同志社大学の通知を収集する拡張機能です",
+  "content_scripts": [
+    {
+      "matches": [ "https://*/*" ],
+      "js": [ "content_scripts.js" ]
+    }
+  ],
+  "page_action": {
+    "default_title": ""
+  }
+}

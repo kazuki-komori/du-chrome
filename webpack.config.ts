@@ -1,11 +1,10 @@
-import { ConfigurationFactory } from 'webpack'
 import path from 'path'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-const config: ConfigurationFactory = () => {
+const config = () => {
     return {
         entry: {
-            content_scripts: path.join(__dirname, 'src', 'content_scripts.ts')
+            content_scripts: path.join(__dirname, 'src/config', 'background.ts')
         },
         output: {
             // distディレクトリにcontent_scripts.jsを吐く
@@ -26,9 +25,12 @@ const config: ConfigurationFactory = () => {
         },
         plugins: [
             // publicディレクトリにあるファイルをdistディレクトリにコピーする
-            new CopyWebpackPlugin([
-                { from: 'public', to: '.' }
-            ])
+            new CopyWebpackPlugin({
+                patterns: [
+                  {from: 'public', to: '.'},
+                  {from: 'src/config/manifest.json', to: '.'}
+                ]
+            })
         ]
     }
 }
