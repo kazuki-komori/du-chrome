@@ -17,5 +17,8 @@
   ],
   "page_action": {
     "default_title": ""
-  }
+  },
+  "permissions": [
+    "storage"
+  ]
 }

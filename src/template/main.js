@@ -4,7 +4,6 @@ import App from "./App.vue";
 (function () {
     'use strict';
     let el = document.querySelector('.table-responsive')
-    console.log(el)
     el.insertAdjacentHTML(
         "beforebegin",
         `<div id="vue-app"></div>`
