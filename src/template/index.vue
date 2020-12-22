@@ -4,7 +4,10 @@
     <div v-for="(notice, idx) in notices" :key="idx">
       <div v-for="(n, idx2) in notice" :key="idx2" style="background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%); margin: 5px 0; padding: 5px">
         <p style="margin: 5px 0;">{{n.className}}</p>
-        <p style="margin: 5px 0;">{{n.type}}</p>
+        <section style="display: flex;">
+          <p style="margin: 5px 0;">{{n.description}}</p>
+          <p style="margin: 5px 0; text-align: right">{{n.type}}</p>
+        </section>
       </div>
     </div>
     <button @click="StorageClear">storage clear</button>

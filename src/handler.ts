@@ -17,12 +17,20 @@ export class Handler{
 
     const types: string[] = ["試験", "レポート", "レポート（成績非公開）"]
     for (let element of elements) {
-      console.log(element.children)
+      let description: string = ""
+      let link: string = ""
       for (let el of element.children){
+        if (el.localName === "h4") {
+          description = el.innerText
+          link = el.getElementsByTagName("a")[0]?.getAttribute('href') ?? ""
+        }
         if (types.includes(el.innerText) && Data.isActive(element.lastChild?.textContent ?? "")) {
+          console.log(description)
           params[id].push({
             className: className,
+            description: description,
             type: el.innerText,
+            link: link,
             endTime: Data.calcTime(element.lastChild?.textContent ?? "").end
           })
         }

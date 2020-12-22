@@ -4,6 +4,8 @@ export interface StorageParams {
 
 interface paramsObj {
   className: string,
+  description: string,
   type: string,
+  link: string
   endTime: number,
 }
