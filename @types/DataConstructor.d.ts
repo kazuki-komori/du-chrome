@@ -1,0 +1,1 @@
+export type calcTimeType = Record<'start'| 'end', number>

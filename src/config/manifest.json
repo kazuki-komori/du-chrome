@@ -7,12 +7,12 @@
   "description": "同志社大学の通知を収集する拡張機能です",
   "content_scripts": [
     {
-      "matches": [ "https://eclass.doshisha.ac.jp/webclass/course.php/*/*" ],
-      "js": [ "content_scripts.js"]
+      "matches": ["https://eclass.doshisha.ac.jp/webclass/course.php/*/*" ],
+      "js": ["content_scripts.js"]
     },
     {
-      "matches": [ "https://eclass.doshisha.ac.jp/webclass/" ],
-      "js": [ "template.js"]
+      "matches": ["https://eclass.doshisha.ac.jp/webclass/", "https://eclass.doshisha.ac.jp/webclass/?*"],
+      "js": ["template.js"]
     }
   ],
   "page_action": {

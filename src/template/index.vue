@@ -1,8 +1,11 @@
 <template>
-  <div>
+  <div v-if="notices">
     <p>hello</p>
-    <div v-for="(idx, notice) in notices" :key="idx" style="border: red solid 2px">
-      <p>{{notice}}</p>
+    <div v-for="(notice, idx) in notices" :key="idx">
+      <div v-for="(n, idx2) in notice" :key="idx2" style="background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%); margin: 5px 0; padding: 5px">
+        <p style="margin: 5px 0;">{{n.className}}</p>
+        <p style="margin: 5px 0;">{{n.type}}</p>
+      </div>
     </div>
     <button @click="StorageClear">storage clear</button>
   </div>
@@ -13,7 +16,7 @@ import {StorageService} from "@/services/Chrome/StorageService.ts";
 export default {
   data() {
     return {
-      notices: []
+      notices: null
     }
   },
   async mounted() {

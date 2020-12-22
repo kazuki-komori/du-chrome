@@ -15,11 +15,18 @@ export class Handler{
     //いったん空に
     Storage.removeStorage(id)
 
+    const types: string[] = ["試験", "レポート", "レポート（成績非公開）"]
     for (let element of elements) {
-      for (let e of element.children)
-        if (e.innerHTML == ("試験" || "レポート") && Data.isEnd(element.lastChild?.textContent ?? "")) {
-          params[id].push({className: className, type: e.innerHTML, endTime: Data.calcTime(element.lastChild?.textContent ?? "")})
+      console.log(element.children)
+      for (let el of element.children){
+        if (types.includes(el.innerText) && Data.isActive(element.lastChild?.textContent ?? "")) {
+          params[id].push({
+            className: className,
+            type: el.innerText,
+            endTime: Data.calcTime(element.lastChild?.textContent ?? "").end
+          })
         }
+      }
     }
     console.log(params)
     Storage.setStorage(params)
@@ -30,7 +37,3 @@ export class Handler{
     return String(urlArr.pop())
   }
 }
-
-
-// const handler = new Handler()
-// handler.getElem()
