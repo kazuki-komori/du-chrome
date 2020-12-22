@@ -18,7 +18,7 @@ module.exports = {
     // エントリーポイント(メインのjsファイル)
     // entry: './src/template/main.js',
     entry: {
-        content_scripts: path.join(__dirname, 'src', 'handler.ts'),
+        content_scripts: path.join(__dirname, 'src', 'background.ts'),
         template: ["babel-polyfill", path.join(__dirname, 'src/template', 'main.js')]
     },
     // ファイルの出力設定

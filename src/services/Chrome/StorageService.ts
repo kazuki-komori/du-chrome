@@ -18,12 +18,12 @@ export class StorageService {
   })
 
   removeStorage = (classId: string) => {
-    //@ts-ignore
+    // @ts-ignore
     chrome.storage.sync.remove(classId, () => {console.log("Removed!!")})
   }
 
   clearStorage = () => {
-    //@ts-ignore
+    // @ts-ignore
     chrome.storage.sync.clear()
   }
 }

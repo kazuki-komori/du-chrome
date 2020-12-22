@@ -32,5 +32,5 @@ export class Handler{
 }
 
 
-const handler = new Handler()
-handler.getElem()
+// const handler = new Handler()
+// handler.getElem()
