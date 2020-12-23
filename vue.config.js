@@ -7,7 +7,7 @@ module.exports = {
         },
     },
     publicPath: './',
-    css: {
-        extract: false //cssを別ファイルに分けずに、一個のjsファイルとして出力させる
-    }
+    // css: {
+    //     extract: false //cssを別ファイルに分けずに、一個のjsファイルとして出力させる
+    // }
 };

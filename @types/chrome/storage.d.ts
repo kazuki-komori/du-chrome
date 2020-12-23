@@ -6,6 +6,6 @@ interface paramsObj {
   className: string,
   description: string,
   type: string,
-  link: string
+  id: string
   endTime: number,
 }

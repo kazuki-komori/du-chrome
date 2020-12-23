@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+import VueRouter from "vue-router";
 
 (function () {
     'use strict';
@@ -8,6 +9,7 @@ import App from "./App.vue";
         "beforebegin",
         `<div id="vue-app"></div>`
     );
+    Vue.use(VueRouter)
     let vm = new Vue({
         render: h => h(App)
     }).$mount("#vue-app");
