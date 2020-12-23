@@ -1,6 +1,6 @@
 <template>
   <div v-if="notices" class="c-notice">
-    <p class="">hello</p>
+    <p class="text-white">hello</p>
     <div v-for="(notice, idx) in notices" :key="idx">
       <div
           v-for="(n, idx2) in notice"
@@ -11,7 +11,7 @@
            class="c-notice__texts"
         >
           <p class="c-notice__className">{{n.className}}</p>
-          <section class="c-notice__content" style="display: flex;">
+          <section class="c-notice__content">
             <p class="c-notice__content--des">{{n.description}}</p>
             <p class="c-notice__content--type">{{n.type}}</p>
           </section>
@@ -22,12 +22,20 @@
   </div>
 </template>
 <script>
-import {StorageService} from "@/services/Chrome/StorageService.ts";
+import {StorageService} from "../../services/Chrome/StorageService.ts";
 
 export default {
   data() {
     return {
-      notices: null,
+      notices: {
+        "200": [
+          {
+            className: "hoge",
+            description: "fuga",
+            type: "nn"
+          }
+        ]
+      },
     }
   },
   async mounted() {

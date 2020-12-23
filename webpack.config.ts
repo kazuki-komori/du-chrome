@@ -1,5 +1,5 @@
 import path from 'path'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+import {CopyWebpackPlugin} from "copy-webpack-plugin"
 const { VueLoaderPlugin } = require('vue-loader')
 require("babel-polyfill")
 // 開発or本番モードの選択(development、production、noneのいずれか設定必須)
@@ -17,10 +17,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = (env: any, argv: any) => {
     return {
         // エントリーポイント(メインのjsファイル)
-        // entry: './src/template/main.js',
+        // entry: './src/template/main.ts',
         entry: {
             content_scripts: path.join(__dirname, 'src', 'background.ts'),
-            template: ["babel-polyfill", path.join(__dirname, 'src/template', 'main.js')]
+            template: path.join(__dirname, 'src/template/src', 'main.ts')
         },
         // ファイルの出力設定
         output: {
@@ -42,7 +42,8 @@ module.exports = (env: any, argv: any) => {
                     test: /\.css$/,
                     use: [
                         "style-loader",
-                        "css-loader"
+                        "css-loader",
+                        'postcss-loader'
                     ]
                 },
                 {
@@ -71,7 +72,7 @@ module.exports = (env: any, argv: any) => {
             // Webpackで利用するときの設定
             alias: {
                 vue$: "vue/dist/vue.esm.js",
-                '@': path.resolve(__dirname, 'src/')
+                '@': path.resolve(__dirname, 'src/template/src/')
             },
             extensions: ["*", ".ts", ".js", ".vue", ".json"]
         },
@@ -83,6 +84,8 @@ module.exports = (env: any, argv: any) => {
             }),
             // Vueを読み込めるようにするため
             new VueLoaderPlugin(),
+            require('tailwindcss'),
+            require('autoprefixer'),
         ],
         // mode:puroductionでビルドした場合のファイル圧縮
         optimization: {
