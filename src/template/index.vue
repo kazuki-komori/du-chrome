@@ -1,17 +1,19 @@
 <template>
-  <div v-if="notices">
-    <p class="contents">hello</p>
+  <div v-if="notices" class="c-notice">
+    <p class="">hello</p>
     <div v-for="(notice, idx) in notices" :key="idx">
       <div
           v-for="(n, idx2) in notice"
           :key="idx2"
-          style="background-image: linear-gradient(135deg, #90F7EC 10%, #32CCBC 100%); margin: 5px 0; padding: 5px"
+          class="c-notice__contents"
       >
-        <a :href="`https://eclass.doshisha.ac.jp/webclass/course.php/${idx}/?acs_=${(Math.random()*0xFFFFFFFF<<0).toString(16)}#${n.id}`">
-          <p style="margin: 5px 0;">{{n.className}}</p>
-          <section style="display: flex;">
-            <p style="margin: 5px 0;">{{n.description}}</p>
-            <p style="margin: 5px 0; text-align: right">{{n.type}}</p>
+        <a :href="`https://eclass.doshisha.ac.jp/webclass/course.php/${idx}/`"
+           class="c-notice__texts"
+        >
+          <p class="c-notice__className">{{n.className}}</p>
+          <section class="c-notice__content" style="display: flex;">
+            <p class="c-notice__content--des">{{n.description}}</p>
+            <p class="c-notice__content--type">{{n.type}}</p>
           </section>
         </a>
       </div>
@@ -42,13 +44,62 @@ export default {
     }
   },
   computed: {
-    retAcs() {
+    retBgColor(type) {
+      if (type === "danger") {
+        return {
+          "background-image": "linear-gradient(135deg, #9A0004 10%, #FB1218 100%)"
+        }
+      } else if (type === "warning") {
+        return {
+          "background-image": "linear-gradient(135deg, #FF5815 10%, #FFDB14 100%)"
+        }
+      } else if (type === "primary") {
+        return {
+          "background-image": "linear-gradient( 135deg, #32CCBC 10%, #90f7ec 100%)"
+        }
+      } else if (type === "done") {
+        return {
+          "background-image": "linear-gradient( 135deg, ##28C76F 10%, #81FBB8 100%)"
+        }
+      }
     }
   }
 }
 </script>
 <style scoped>
-.contents {
-  color: red;
+.c-notice__contents {
+  background-image: linear-gradient(135deg, #9A0004 10%, #FB1218 100%);
+  /*background-color: #0396FF;*/
+  transition: all 0.5s;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.c-notice__contents:hover {
+  opacity: 0.7;
+}
+
+.c-notice__texts {
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+.c-notice__className {
+  margin: 5px 0;
+}
+
+.c-notice__content {
+  display: flex;
+}
+
+.c-notice__content--des {
+  margin: 5px 0;
+}
+
+.c-notice__content--type {
+  margin: 5px 0;
+  text-align: right
 }
 </style>
