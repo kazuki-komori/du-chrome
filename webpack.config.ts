@@ -1,6 +1,7 @@
 import path from 'path'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 require("babel-polyfill")
 // 開発or本番モードの選択(development、production、noneのいずれか設定必須)
 // development: 開発時のファイル出力のモード(最適化より時間短縮,エラー表示などを優先)
@@ -42,7 +43,8 @@ module.exports = (env: any, argv: any) => {
                     test: /\.css$/,
                     use: [
                         "style-loader",
-                        "css-loader"
+                        "css-loader",
+                        "postcss-loader"
                     ]
                 },
                 {
