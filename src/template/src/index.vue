@@ -22,12 +22,20 @@
   </div>
 </template>
 <script>
-import {StorageService} from "@/services/Chrome/StorageService.ts";
+import {StorageService} from "../../services/Chrome/StorageService.ts";
 
 export default {
   data() {
     return {
-      notices: null,
+      notices: {
+        "20000": [
+          {
+            className: "hoge",
+            description: "fuga",
+            type: "試験"
+          }
+        ]
+      }
     }
   },
   async mounted() {
