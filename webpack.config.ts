@@ -17,10 +17,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = (env: any, argv: any) => {
     return {
         // エントリーポイント(メインのjsファイル)
-        // entry: './src/template/main.js',
+        // entry: './src/template/main.ts',
         entry: {
             content_scripts: path.join(__dirname, 'src', 'background.ts'),
-            template: ["babel-polyfill", path.join(__dirname, 'src/template', 'main.js')]
+            template: ["babel-polyfill", path.join(__dirname, 'src/template/src', 'main.ts')]
         },
         // ファイルの出力設定
         output: {
